@@ -22,10 +22,17 @@ function getWeatherByCityName(city) {
 // get weather by zip code
 
 
+// set background image based on weather
+function setBackgroundImage(weather) {
+  document.querySelector('body').style.backgroundImage = `url(images/${weather}.jpg)`;
+}
+
 // render weather info
 function renderWeatherInfo(data) {
   weatherInfo.innerHTML = '';
   console.log(data);
+  // set bg
+  setBackgroundImage(data.weather[0].main.toLowerCase());
   // city name
   const name = document.createElement('h1');
   name.innerText = `${data.name}, ${data.sys.country}`;
@@ -69,23 +76,23 @@ function isFloat(n) {
 function convertTemperature(e) {
   const tempDiv = document.querySelector('#temp');
   const tempToConvert = tempDiv.innerText;
+  let newTemp;
   if (currentTemp === 'F') {
-    let celsiusTemp = (tempToConvert - 32) * 5 / 9;
-    if (isFloat(celsiusTemp)) {
-      celsiusTemp = celsiusTemp.toFixed(1);
-    }
-    tempDiv.innerText = celsiusTemp;
+    // fahrenheit to celsius
+    newTemp = (tempToConvert - 32) * 5 / 9;
     e.target.innerText = 'Convert to Fahrenheit';
     currentTemp = 'C';
   } else {
-    let fahrenheitTemp = tempToConvert * 9 / 5 + 32;
-    if (isFloat(fahrenheitTemp)) {
-      fahrenheitTemp = fahrenheitTemp.toFixed(1);
-    }
-    tempDiv.innerText = fahrenheitTemp;
+    // celsius to fahrenheit
+    newTemp = tempToConvert * 9 / 5 + 32;
     e.target.innerText = 'Convert to Celsius';
     currentTemp = 'F';
   }
+  // round the temperature if it is float and update in the UI
+  if (isFloat(newTemp)) {
+    newTemp = newTemp.toFixed(1);
+  }
+  tempDiv.innerText = newTemp;
 }
 
 // when document is laoded
