@@ -6,31 +6,45 @@ let currentTemp = 'F';
 // form submit handler
 function onFormSubmit(e) {
   e.preventDefault();
-  const city = e.target.elements['city'].value;
-  getWeatherByCityName(city);
+  const value = e.target.elements['city'].value;
+  // check if user typed in ZIP code or city name
+  if (/^\d+$/.test(value)) {
+    getWeatherByZIP(value);
+  } else {
+    getWeatherByCityName(value);
+  }
   e.target.elements['city'].value = '';
 }
 
 // get weather by city name
 function getWeatherByCityName(city) {
-  const url = `http://api.openweathermap.org/data/2.5/weather?APPID=${KEY}&q=${city}&units=imperial`;
-  fetch(url)
+  fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=${KEY}&q=${city}&units=imperial`)
     .then(res => res.json())
     .then(data => renderWeatherInfo(data));
 }
 
 // get weather by zip code
-
+function getWeatherByZIP(zip) {
+  console.log('RUNS');
+  fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=${KEY}&zip=${zip}&units=imperial`)
+    .then(res => res.json())
+    .then(data => renderWeatherInfo(data));
+}
 
 // set background image based on weather
 function setBackgroundImage(weather) {
-  document.querySelector('body').style.backgroundImage = `url(images/${weather}.jpg)`;
+  const body = document.querySelector('body');
+  const atmosphere = ['mist', 'smoke', 'haze', 'sand', 'fog', 'dust', 'squalls', 'tornado'];
+  if (atmosphere.indexOf(weather) !== -1) {
+    body.style.backgroundImage = `url(images/fog.jpg)`;
+  } else {
+    body.style.backgroundImage = `url(images/${weather}.jpg)`;
+  }
 }
 
 // render weather info
 function renderWeatherInfo(data) {
   weatherInfo.innerHTML = '';
-  console.log(data);
   // set bg
   setBackgroundImage(data.weather[0].main.toLowerCase());
   // city name
