@@ -1,3 +1,31 @@
-body {
-  background: red;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.navbar {
+  background: #1c2541;
+  padding: 16px;
+}
+
+#city-form {
+  width: 40vw;
+  margin: 0 auto;
+  display: flex;
+}
+
+#city-form input {
+  flex: 1;
+  font-size: 17px;
+  padding: 8px 12px 4px;
+}
+
+#city-form button {
+  width: 150px;
 }
