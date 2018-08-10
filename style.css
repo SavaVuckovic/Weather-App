@@ -32,7 +32,6 @@ body {
 #city-form button {
   width: 150px;
   font-size: 16px;
-  opacity: 1;
 }
 
 #weather-info {
@@ -45,6 +44,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  visibility: hidden;
 }
 
 #weather-info p {
@@ -74,4 +74,37 @@ body {
 .description img {
   width: 64px;
   height: 64px;
+}
+
+@media only screen and (max-width: 576px) {
+  #city-form {
+    width: 90vw;
+  }
+
+  #city-form input {
+    font-size: 14px;
+    padding: 8px 12px 6px;
+  }
+
+  #city-form button {
+    width: 100px;
+    font-size: 14px;
+  }
+
+  #weather-info {
+    width: 80vw;
+    height: auto;
+    margin: 60px auto 0;
+    padding: 0 12px 16px;
+  }
+
+  #weather-info p {
+    font-size: 18px;
+    margin: 12px 0;
+  }
+
+  #weather-info button {
+    margin-top: 8px;
+    font-size: 16px;
+  }
 }

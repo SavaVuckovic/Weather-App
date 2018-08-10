@@ -44,7 +44,13 @@ function setBackgroundImage(weather) {
 
 // render weather info
 function renderWeatherInfo(data) {
+  // handle invalid city
+  if (data.cod === '404') {
+    return alert(data.message);
+  }
+  // clear weather info div
   weatherInfo.innerHTML = '';
+  weatherInfo.style.visibility = 'visible';
   // set bg
   setBackgroundImage(data.weather[0].main.toLowerCase());
   // city name
