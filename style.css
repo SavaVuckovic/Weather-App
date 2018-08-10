@@ -39,6 +39,20 @@ html {
   text-align: center;
 }
 
+#weather-info p {
+  font-size: 20px;
+}
+
+#weather-info p span {
+  font-weight: bold;
+  color: #1c2541;
+}
+
+#weather-info button {
+  padding: 8px;
+  font-size: 16px;
+}
+
 .description {
   display: flex;
   align-items: center;
