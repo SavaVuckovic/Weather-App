@@ -1,0 +1,19 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Weather app",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SavaVuckovic/Weather-App.git"
+  },
+  "author": "Sava Vuckovic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SavaVuckovic/Weather-App/issues"
+  },
+  "homepage": "https://github.com/SavaVuckovic/Weather-App#readme"
+}
