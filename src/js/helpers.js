@@ -1,34 +1,30 @@
-const form = document.querySelector('#city-form');
-const weatherInfo = document.querySelector('#weather-info');
+
 const KEY = 'd320faf89d1840d0568c490f52c819d3';
+const weatherInfo = document.querySelector('#weather-info');
 let currentTemp = 'F';
 
-// form submit handler
-function onFormSubmit(e) {
-  e.preventDefault();
-  const value = e.target.elements['city'].value;
-  // check if user typed in ZIP code or city name
-  if (/^\d+$/.test(value)) {
-    getWeatherByZIP(value);
-  } else {
-    getWeatherByCityName(value);
-  }
-  e.target.elements['city'].value = '';
+// check if value is a number
+export function isNumber(value) {
+  return /^\d+$/.test(value);
 }
 
 // get weather by city name
-function getWeatherByCityName(city) {
+export function getWeatherByCityName(city) {
   fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=${KEY}&q=${city}&units=imperial`)
     .then(res => res.json())
     .then(data => renderWeatherInfo(data));
 }
 
 // get weather by zip code
-function getWeatherByZIP(zip) {
-  console.log('RUNS');
+export function getWeatherByZIP(zip) {
   fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=${KEY}&zip=${zip}&units=imperial`)
     .then(res => res.json())
     .then(data => renderWeatherInfo(data));
+}
+
+// check if number is float
+function isFloat(n) {
+  return n === +n && n !== (n|0);
 }
 
 // set background image based on weather
@@ -87,11 +83,6 @@ function renderWeatherInfo(data) {
   weatherInfo.appendChild(convertBtn);
 }
 
-// check if number is float
-function isFloat(n) {
-  return n === +n && n !== (n|0);
-}
-
 // convert from fahrenheit to celsius
 function convertTemperature(e) {
   const tempDiv = document.querySelector('#temp');
@@ -114,8 +105,3 @@ function convertTemperature(e) {
   }
   tempDiv.innerText = newTemp;
 }
-
-// when document is laoded
-document.addEventListener("DOMContentLoaded", () => {
-  form.addEventListener('submit', onFormSubmit);
-});
