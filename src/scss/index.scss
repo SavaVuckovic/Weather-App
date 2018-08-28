@@ -6,74 +6,64 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.navbar {
-  background: #1c2541;
-  padding: 16px;
-}
-
-#city-form {
-  width: 40vw;
-  margin: 0 auto;
-  display: flex;
-}
-
-#city-form input {
-  flex: 1;
-  font-size: 16px;
-  padding: 8px 12px 6px;
-}
-
-#city-form button {
-  width: 150px;
-  font-size: 16px;
-}
-
-#weather-info {
-  width: 50vw;
-  height: 50vh;
-  margin: 100px auto 0;
-  background: #fff;
-  opacity: 0.85;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  visibility: hidden;
-}
-
-#weather-info p {
-  font-size: 20px;
-}
-
-#weather-info p span {
-  font-weight: bold;
-  color: #1c2541;
-}
-
-#weather-info button {
-  padding: 8px;
-  font-size: 16px;
-}
-
-.description {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.description span {
-  font-size: 22px;
-}
-
-.description img {
-  width: 64px;
-  height: 64px;
+  * {
+    box-sizing: border-box;
+  }
+  .navbar {
+    background: #1c2541;
+    padding: 16px;
+    #city-form {
+      width: 40vw;
+      margin: 0 auto;
+      display: flex;
+      input {
+        flex: 1;
+        font-size: 16px;
+        padding: 8px 12px 6px;
+      }
+      button {
+        width: 150px;
+        font-size: 16px;
+      }
+    }
+  }
+  .template {
+    display: none;
+  }
+  .weather-info {
+    width: 50vw;
+    height: 50vh;
+    margin: 100px auto 0;
+    background: #fff;
+    opacity: 0.85;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    p {
+      font-size: 20px;
+    }
+    p span {
+      font-weight: bold;
+      color: #1c2541;
+    }
+    button {
+      padding: 8px;
+      font-size: 16px;
+    }
+    .description {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        font-size: 22px;
+      }
+      img {
+        width: 64px;
+        height: 64px;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 576px) {

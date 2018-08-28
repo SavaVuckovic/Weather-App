@@ -8,12 +8,36 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
   </head>
   <body>
+
     <nav class="navbar">
       <form id="city-form">
         <input type="text" name="city" placeholder="City name or ZIP code">
         <button type="submit">Get Weather</button>
       </form>
     </nav>
-    <div id="weather-info"></div>
+
+    <div class="template" id="weather-info-template">
+      <div class="weather-info">
+        <h1 class="city-name"></h1>
+        <div class="description">
+          <span class="text"></span>
+          <img class="icon" alt="weather-icon">
+        </div>
+        <p class="humidity">
+          humidity
+          <span></span>
+        </p>
+        <p class="pressure">
+          pressure
+          <span></span>
+        </p>
+        <p class="temperature">
+          temperature
+          <span id="temp"></span>
+        </p>
+        <button type="button" name="button">Convert to Celsius</button>
+      </div>
+    </div>
+
   </body>
 </html>

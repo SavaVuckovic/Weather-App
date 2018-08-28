@@ -1,6 +1,5 @@
 
 const KEY = 'd320faf89d1840d0568c490f52c819d3';
-const weatherInfo = document.querySelector('#weather-info');
 let currentTemp = 'F';
 
 // check if value is a number
@@ -44,48 +43,30 @@ function renderWeatherInfo(data) {
   if (data.cod === '404') {
     return alert(data.message);
   }
-  // clear weather info div
-  weatherInfo.innerHTML = '';
-  weatherInfo.style.visibility = 'visible';
   // set bg
-  setBackgroundImage(data.weather[0].main.toLowerCase());
-  // city name
-  const name = document.createElement('h1');
-  name.innerText = `${data.name}, ${data.sys.country}`;
-  weatherInfo.appendChild(name);
-  // description & icon
-  const descriptionWrapper = document.createElement('div');
-  descriptionWrapper.classList.add('description');
-  const description = document.createElement('span');
-  description.innerText = data.weather[0].description;
-  const icon = document.createElement('img');
-  icon.setAttribute('src', `http://openweathermap.org/img/w/${data.weather[0].icon}.png`);
-  icon.setAttribute('alt', 'weather-icon');
-  descriptionWrapper.appendChild(description);
-  descriptionWrapper.appendChild(icon);
-  weatherInfo.appendChild(descriptionWrapper);
-  // humidity
-  const humidity = document.createElement('p');
-  humidity.innerHTML = `humidity: <span>${data.main.humidity}</span>`;
-  weatherInfo.appendChild(humidity);
-  // pressure
-  const pressure = document.createElement('p');
-  pressure.innerHTML = `pressure: <span>${data.main.pressure}</span>`;
-  weatherInfo.appendChild(pressure);
-  // temperature
-  const temperature = document.createElement('p');
-  temperature.innerHTML = `temperature: <span id="temp">${data.main.temp}</span>`;
-  weatherInfo.appendChild(temperature);
-  // converting button
-  const convertBtn = document.createElement('button');
-  convertBtn.innerText = 'Convert to Celsius';
-  convertBtn.addEventListener('click', e => {
+  // setBackgroundImage(data.weather[0].main.toLowerCase());
+
+  // populate the template with correct info
+  const weatherTemplate = document.querySelector('#weather-info-template .weather-info');
+  const newWeather = weatherTemplate.cloneNode(true);
+  newWeather.querySelector('.city-name').innerText = `${data.name}, ${data.sys.country}`;
+  newWeather.querySelector('.text').innerText = data.weather[0].description;
+  newWeather.querySelector('.icon').src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+  newWeather.querySelector('.humidity span').innerText = data.main.humidity;
+  newWeather.querySelector('.pressure span').innerText = data.main.pressure;
+  newWeather.querySelector('#temp').innerText = data.main.temp;
+  newWeather.querySelector('button').addEventListener('click', e => {
     const tempToConvert = document.querySelector('#temp').innerText;
     const newTemp = convertTemperature(tempToConvert);
     updateTemperatureText(newTemp);
     toggleButtonLabel(e.target);
   });
-  weatherInfo.appendChild(convertBtn);
+  // remove the old one and append new one to the body
+  const body = document.querySelector('body');
+  if (body.querySelectorAll('.weather-info').length > 1) {
+    body.removeChild(body.querySelectorAll('.weather-info')[1]);
+  }
+  body.append(newWeather);
 }
 
 // convert from fahrenheit to celsius
