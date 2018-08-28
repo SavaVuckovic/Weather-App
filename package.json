@@ -4,7 +4,7 @@
   "description": "Weather app",
   "main": "script.js",
   "scripts": {
-    "build": "webpack --config=config/webpack.dev.js",
+    "build": "webpack --config=config/webpack.prod.js",
     "dev": "nodemon --watch config --watch src/dev-server src/dev-server/index.js"
   },
   "repository": {
