@@ -33,7 +33,7 @@ body {
   .navbar {
     background: #1c2541;
     padding: 16px;
-    #city-form {
+    .city-form {
       width: 40vw;
       margin: 0 auto;
       display: flex;
@@ -63,10 +63,10 @@ body {
     justify-content: center;
     p {
       font-size: 20px;
-    }
-    p span {
-      font-weight: bold;
-      color: #1c2541;
+      span {
+        font-weight: bold;
+        color: #1c2541;
+      }
     }
     button {
       padding: 8px;
@@ -85,37 +85,33 @@ body {
       }
     }
   }
-}
-
-@media only screen and (max-width: 576px) {
-  #city-form {
-    width: 90vw;
-  }
-
-  #city-form input {
-    font-size: 14px;
-    padding: 8px 12px 6px;
-  }
-
-  #city-form button {
-    width: 100px;
-    font-size: 14px;
-  }
-
-  #weather-info {
-    width: 80vw;
-    height: auto;
-    margin: 60px auto 0;
-    padding: 0 12px 16px;
-  }
-
-  #weather-info p {
-    font-size: 18px;
-    margin: 12px 0;
-  }
-
-  #weather-info button {
-    margin-top: 8px;
-    font-size: 16px;
+  @media only screen and (max-width: 576px) {
+    .navbar {
+      .city-form {
+        width: 90vw;
+        input {
+          font-size: 14px;
+          padding: 8px 12px 6px;
+        }
+        button {
+          width: 100px;
+          font-size: 14px;
+        }
+      }
+    }
+    .weather-info {
+      width: 80vw;
+      height: auto;
+      margin: 60px auto 0;
+      padding: 0 12px 16px;
+      p {
+        font-size: 18px;
+        margin: 12px 0;
+      }
+      button {
+        margin-top: 8px;
+        font-size: 16px;
+      }
+    }
   }
 }

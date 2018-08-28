@@ -6,12 +6,12 @@ import {
   getWeatherByCityName
 } from './helpers';
 
-// when document is laoded
+// when document is loaded
 document.addEventListener("DOMContentLoaded", () => {
   // default city once the page loads
   getWeatherByCityName('Nis');
 
-  const form = document.querySelector('#city-form');
+  const form = document.querySelector('.city-form');
   form.addEventListener('submit', e => {
     e.preventDefault();
     const value = e.target.elements['city'].value;
