@@ -79,29 +79,43 @@ function renderWeatherInfo(data) {
   // converting button
   const convertBtn = document.createElement('button');
   convertBtn.innerText = 'Convert to Celsius';
-  convertBtn.addEventListener('click', convertTemperature);
+  convertBtn.addEventListener('click', e => {
+    const tempToConvert = document.querySelector('#temp').innerText;
+    const newTemp = convertTemperature(tempToConvert);
+    updateTemperatureText(newTemp);
+    toggleButtonLabel(e.target);
+  });
   weatherInfo.appendChild(convertBtn);
 }
 
 // convert from fahrenheit to celsius
-function convertTemperature(e) {
-  const tempDiv = document.querySelector('#temp');
-  const tempToConvert = tempDiv.innerText;
+function convertTemperature(tempToConvert) {
   let newTemp;
   if (currentTemp === 'F') {
     // fahrenheit to celsius
     newTemp = (tempToConvert - 32) * 5 / 9;
-    e.target.innerText = 'Convert to Fahrenheit';
     currentTemp = 'C';
   } else {
     // celsius to fahrenheit
     newTemp = tempToConvert * 9 / 5 + 32;
-    e.target.innerText = 'Convert to Celsius';
     currentTemp = 'F';
   }
-  // round the temperature if it is float and update in the UI
+  // round the temperature if it is float
   if (isFloat(newTemp)) {
     newTemp = newTemp.toFixed(1);
   }
-  tempDiv.innerText = newTemp;
+
+  return newTemp;
+}
+
+function toggleButtonLabel(button) {
+  if (button.innerText === 'Convert to Fahrenheit') {
+    button.innerText = 'Convert to Celsius';
+  } else {
+    button.innerText = 'Convert to Fahrenheit';
+  }
+}
+
+function updateTemperatureText(newTemp) {
+  document.querySelector('#temp').innerText = newTemp;
 }
