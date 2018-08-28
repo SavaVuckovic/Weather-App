@@ -1,4 +1,4 @@
-
+const body = document.querySelector('body');
 const KEY = 'd320faf89d1840d0568c490f52c819d3';
 let currentTemp = 'F';
 
@@ -28,13 +28,8 @@ function isFloat(n) {
 
 // set background image based on weather
 function setBackgroundImage(weather) {
-  const body = document.querySelector('body');
   const atmosphere = ['mist', 'smoke', 'haze', 'sand', 'fog', 'dust', 'squalls', 'tornado'];
-  if (atmosphere.indexOf(weather) !== -1) {
-    body.style.backgroundImage = `url(images/fog.jpg)`;
-  } else {
-    body.style.backgroundImage = `url(images/${weather}.jpg)`;
-  }
+  body.className = atmosphere.indexOf(weather) !== -1 ? 'fog' : weather;
 }
 
 // render weather info
@@ -44,11 +39,11 @@ function renderWeatherInfo(data) {
     return alert(data.message);
   }
   // set bg
-  // setBackgroundImage(data.weather[0].main.toLowerCase());
-
-  // populate the template with correct info
+  setBackgroundImage(data.weather[0].main.toLowerCase());
+  // clone the weather info template
   const weatherTemplate = document.querySelector('#weather-info-template .weather-info');
   const newWeather = weatherTemplate.cloneNode(true);
+  // populate the template with correct info
   newWeather.querySelector('.city-name').innerText = `${data.name}, ${data.sys.country}`;
   newWeather.querySelector('.text').innerText = data.weather[0].description;
   newWeather.querySelector('.icon').src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
@@ -62,7 +57,6 @@ function renderWeatherInfo(data) {
     toggleButtonLabel(e.target);
   });
   // remove the old one and append new one to the body
-  const body = document.querySelector('body');
   if (body.querySelectorAll('.weather-info').length > 1) {
     body.removeChild(body.querySelectorAll('.weather-info')[1]);
   }

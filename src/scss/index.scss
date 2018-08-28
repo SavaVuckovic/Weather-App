@@ -6,6 +6,27 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
+  &.fog {
+    background-image: url('../images/fog.jpg');
+  }
+  &.clear {
+    background-image: url('../images/clear.jpg');
+  }
+  &.clouds {
+    background-image: url('../images/clouds.jpg');
+  }
+  &.drizzle {
+    background-image: url('../images/drizzle.jpg');
+  }
+  &.rain {
+    background-image: url('../images/rain.jpg');
+  }
+  &.snow {
+    background-image: url('../images/snow.jpg');
+  }
+  &.thunderstorm {
+    background-image: url('../images/thunderstorm.jpg');
+  }
   * {
     box-sizing: border-box;
   }
