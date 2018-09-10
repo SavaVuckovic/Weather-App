@@ -1,10 +1,7 @@
 import '../scss/index.scss';
 import '../index.html';
-import {
-  isNumber,
-  getWeatherByZIP,
-  getWeatherByCityName
-} from './helpers';
+import { getWeatherByCityName, getWeatherByZIP } from './api';
+import { isNumber } from './helpers';
 
 // when document is loaded
 document.addEventListener("DOMContentLoaded", () => {
