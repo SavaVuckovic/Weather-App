@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+  <link href="main-9452181108c16bcd294c.css" rel="stylesheet"></head>
+  <body>
+
+    <nav class="navbar">
+      <form class="city-form">
+        <input type="text" name="city" placeholder="City name or ZIP code">
+        <button type="submit">Get Weather</button>
+      </form>
+    </nav>
+
+    <div class="template" id="weather-info-template">
+      <div class="weather-info">
+        <h1 class="city-name"></h1>
+        <div class="description">
+          <span class="text"></span>
+          <img class="icon" alt="weather-icon">
+        </div>
+        <p class="humidity">
+          humidity
+          <span></span>
+        </p>
+        <p class="pressure">
+          pressure
+          <span></span>
+        </p>
+        <p class="temperature">
+          temperature
+          <span id="temp"></span>
+        </p>
+        <button type="button" name="button">Convert to Celsius</button>
+      </div>
+    </div>
+
+  <script type="text/javascript" src="main-bundle.js"></script></body>
+</html>

@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  &.fog {
+    background-image: url('../images/fog.jpg');
+  }
+  &.clear {
+    background-image: url('../images/clear.jpg');
+  }
+  &.clouds {
+    background-image: url('../images/clouds.jpg');
+  }
+  &.drizzle {
+    background-image: url('../images/drizzle.jpg');
+  }
+  &.rain {
+    background-image: url('../images/rain.jpg');
+  }
+  &.snow {
+    background-image: url('../images/snow.jpg');
+  }
+  &.thunderstorm {
+    background-image: url('../images/thunderstorm.jpg');
+  }
+  * {
+    box-sizing: border-box;
+  }
+  .navbar {
+    background: #1c2541;
+    padding: 16px;
+    .city-form {
+      width: 40vw;
+      margin: 0 auto;
+      display: flex;
+      input {
+        flex: 1;
+        font-size: 16px;
+        padding: 8px 12px 6px;
+      }
+      button {
+        width: 150px;
+        font-size: 16px;
+      }
+    }
+  }
+  .template {
+    display: none;
+  }
+  .weather-info {
+    width: 50vw;
+    height: 50vh;
+    margin: 100px auto 0;
+    background: #fff;
+    opacity: 0.85;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    p {
+      font-size: 20px;
+      span {
+        font-weight: bold;
+        color: #1c2541;
+      }
+    }
+    button {
+      padding: 8px;
+      font-size: 16px;
+    }
+    .description {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        font-size: 22px;
+      }
+      img {
+        width: 64px;
+        height: 64px;
+      }
+    }
+  }
+  @media only screen and (max-width: 576px) {
+    .navbar {
+      .city-form {
+        width: 90vw;
+        input {
+          font-size: 14px;
+          padding: 8px 12px 6px;
+        }
+        button {
+          width: 100px;
+          font-size: 14px;
+        }
+      }
+    }
+    .weather-info {
+      width: 80vw;
+      height: auto;
+      margin: 60px auto 0;
+      padding: 0 12px 16px;
+      p {
+        font-size: 18px;
+        margin: 12px 0;
+      }
+      button {
+        margin-top: 8px;
+        font-size: 16px;
+      }
+    }
+  }
+}
